@@ -1,1 +1,36 @@
-@import 'bulma'
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// variables
+$family-sans-serif: 'Nunito', sans-serif;
+$main-background: 	rgb(238,21,21);
+$background: rgb(240,240,240);
+$text: rgb(240,240,240);
+$link: rgb(34,34,36);
+
+@import '../node_modules/bulma/sass/utilities/_all.sass';
+@import '../node_modules/bulma/sass/base/_all.sass';
+@import 'bulma';
+
+// general styles
+html {
+  background-color: $main-background;
+}
+a {
+  font-weight: bolder;
+}
+a, button, .navbar-logo {
+  transition: all 0.2s ease-in-out;
+}
+.logo {
+  width: 12em;
+}
+.navbar-logo {
+  width: 1.1em;
+}
+.navbar-item:hover > .navbar-logo {
+  transform: scale(1.1);
+}
+.is-active > .navbar-logo {
+  transform: scale(1.1);
+}
