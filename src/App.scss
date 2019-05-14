@@ -34,3 +34,9 @@ a, button, .navbar-logo {
 .is-active > .navbar-logo {
   transform: scale(1.1);
 }
+.pokemon-card {
+  transition: all 0.5s ease-in-out;
+}
+.pokemon-card:hover {
+  transform: scale(1.1);
+}
