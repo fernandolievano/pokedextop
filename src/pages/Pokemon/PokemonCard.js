@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PokemonService from "../../services/PokemonService";
+import TypesBadges from "./TypesBadges";
 
 class PokemonCard extends Component {
   constructor(props) {
@@ -20,16 +21,23 @@ class PokemonCard extends Component {
 
   render() {
     const { name } = this.props;
-    const { id } = this.state.pokemon;
+    const { id, types } = this.state.pokemon;
 
     return (
       <div className="card has-background-danger pokemon-card has-text-centered">
         {id ? (
-          <div className="card-body">
-            <h4 className="is-size-4">#{id}</h4>
+          <div className="card-content">
+            <h4 className="is-size-4">
+              #{id} - <span className="is-capitalized">{name}</span>
+            </h4>
+            <div className="card-image">
+              <img
+                src={this.state.pokemon.sprites.front_default}
+                alt="sprite"
+              />
+            </div>
             <div className="content">
-              <img src={this.state.pokemon.sprites.front_default} alt="sprite" />
-              <p><span className="is-capitalized">{name}</span></p>
+              <TypesBadges types={types} />
             </div>
           </div>
         ) : (

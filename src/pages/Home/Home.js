@@ -12,7 +12,7 @@ class Home extends Component {
         <div className="container">
           <div className="columns is-multiline is-centered">
             <div className="column">
-              <NavLink to="/pokemon/all" className="button">Todos los pokémon</NavLink>
+              <NavLink to="/pokemon/all" className="button is-link">Pokédex</NavLink>
             </div>
           </div>
         </div>

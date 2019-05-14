@@ -5,7 +5,6 @@ import Home from "./pages/Home/Home";
 import Navbar from "./components/MainNavbar";
 import NotFound from "./pages/NotFound/NotFound";
 import "./App.scss";
-
 function App() {
   return (
     <HashRouter>
