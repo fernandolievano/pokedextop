@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import Logo from "../../pokeball.svg";
 
 class Home extends Component {
@@ -12,7 +11,7 @@ class Home extends Component {
         <div className="container">
           <div className="columns is-multiline is-centered">
             <div className="column">
-              <NavLink to="/pokemon/all" className="button is-link">Pokédex</NavLink>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati itaque omnis repellat quidem tempore quis iste consequatur voluptates blanditiis repudiandae! Perspiciatis corrupti qui quisquam laudantium cupiditate voluptatibus nam, dolorem ipsum!
             </div>
           </div>
         </div>

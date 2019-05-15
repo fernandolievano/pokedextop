@@ -10,6 +10,10 @@ class PokemonCard extends Component {
   }
 
   async componentDidMount() {
+    this.getPokemon();
+  }
+
+  getPokemon = async () => {
     try {
       const response = await PokemonService.getPokemon(this.props.url);
       const data = response.data;
@@ -17,6 +21,10 @@ class PokemonCard extends Component {
     } catch (error) {
       this.setState({ error: error });
     }
+  };
+
+  componentDidUpdate() {
+    this.getPokemon();
   }
 
   render() {
@@ -25,16 +33,21 @@ class PokemonCard extends Component {
 
     return (
       <div className="card has-background-danger pokemon-card has-text-centered">
+      <div id="point"></div>
         {id ? (
           <div className="card-content">
             <h4 className="is-size-4">
               #{id} - <span className="is-capitalized">{name}</span>
             </h4>
             <div className="card-image">
-              <img
-                src={this.state.pokemon.sprites.front_default}
-                alt="sprite"
-              />
+              {this.state.pokemon.sprites.front_default ? (
+                <img
+                  src={this.state.pokemon.sprites.front_default}
+                  alt="sprite"
+                />
+              ) : (
+                "Sprite no disponible"
+              )}
             </div>
             <div className="content">
               <TypesBadges types={types} />

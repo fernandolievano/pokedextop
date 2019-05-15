@@ -7,6 +7,7 @@ $main-background: 	rgb(238,21,21);
 $background: rgb(240,240,240);
 $text: rgb(240,240,240);
 $link: rgb(34,34,36);
+$menu-list-border-left: rgb(240,240,240);
 
 @import '../node_modules/bulma/sass/utilities/_all.sass';
 @import '../node_modules/bulma/sass/base/_all.sass';
@@ -25,8 +26,9 @@ a, button, .navbar-logo {
 .logo {
   width: 12em;
 }
-.navbar-logo {
-  width: 1.1em;
+.menu-logo {
+  width: 1em;
+  margin: auto;
 }
 .navbar-item:hover > .navbar-logo {
   transform: scale(1.1);
