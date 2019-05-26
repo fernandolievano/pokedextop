@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import axios from 'axios';
 import PropTypes from "prop-types";
-import PokemonService from "../../services/PokemonService";
+import PokemonService from "../services/PokemonService";
 import TypesBadges from "./TypesBadges";
 
 class PokemonCard extends Component {
@@ -31,7 +31,6 @@ class PokemonCard extends Component {
   }
 
   componentWillUnmount() {
-    console.log('unmount component')
     this.axiosCancelSource.cancel('Component unmounted.')
   }
 
@@ -41,7 +40,6 @@ class PokemonCard extends Component {
 
     return (
       <div className="card has-background-danger pokemon-card has-text-centered">
-        <div id="point"></div>
         {id ? (
           <div className="card-content">
             <h4 className="is-size-4">

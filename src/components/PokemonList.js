@@ -26,9 +26,12 @@ function PokemonList(props) {
                         ""
                     )}
             </div>
+            <div id="point" tabIndex="-1"/>
             {_renderList(props.list)}
             <div className="column is-full">
-                {props.children}
+                <div className="columns">
+                    {props.children}
+                </div>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Types.scss";
+import "../assets/Types.scss";
 
 function _renderTypes(types) {
   return types.map((type, index) => (
