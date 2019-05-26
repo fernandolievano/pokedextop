@@ -63,11 +63,11 @@ class All extends Component {
         <PaginationButton to={prev} onClick={this._prevPage}>
           <span className="icon"><i className="fas fa-arrow-left"></i></span>
           <span>
-            Anterior
+            Previous
           </span>
         </PaginationButton>
         <PaginationButton to={next} onClick={this._nextPage}>
-          <span>Siguiente</span>
+          <span>Next</span>
           <span className="icon">
             <i className="fas fa-arrow-right"></i>
           </span>

@@ -12,8 +12,10 @@ function _renderTypes(types) {
 
 function Types(props) {
   return (
-    <div className="tags has-addons has-text-centered">
-      {_renderTypes(props.types)}
+    <div className="tags-container">
+      <div className="tags has-addons has-text-centered">
+        {_renderTypes(props.types)}
+      </div>
     </div>
   );
 }

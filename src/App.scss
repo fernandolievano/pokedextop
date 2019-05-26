@@ -42,3 +42,7 @@ a, button, .navbar-logo {
 .pokemon-card:hover {
   transform: scale(1.1);
 }
+.tags-container {
+  display: flex; 
+  justify-content: center;
+}
