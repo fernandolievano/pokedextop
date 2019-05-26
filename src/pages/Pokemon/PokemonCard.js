@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { PureComponent as Component } from "react";
+import axios from 'axios';
 import PropTypes from "prop-types";
 import PokemonService from "../../services/PokemonService";
 import TypesBadges from "./TypesBadges";
@@ -9,22 +10,29 @@ class PokemonCard extends Component {
     this.state = { pokemon: {}, error: null };
   }
 
-  async componentDidMount() {
-    this.getPokemon();
-  }
+  axiosCancelSource = axios.CancelToken.source();
 
-  getPokemon = async () => {
+  getPokemon = async (url) => {
     try {
-      const response = await PokemonService.getPokemon(this.props.url);
+      const response = await PokemonService.getPokemon(url, { cancelToken: this.axiosCancelSource.token });
       const data = response.data;
       this.setState({ pokemon: data });
-    } catch (error) {
-      this.setState({ error: error });
+    } catch (err) {
+      throw new Error(err)
     }
   };
 
-  componentDidUpdate() {
-    this.getPokemon();
+  componentDidMount() {
+    this.getPokemon(this.props.url);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.getPokemon(nextProps.url);
+  }
+
+  componentWillUnmount() {
+    console.log('unmount component')
+    this.axiosCancelSource.cancel('Component unmounted.')
   }
 
   render() {
@@ -33,7 +41,7 @@ class PokemonCard extends Component {
 
     return (
       <div className="card has-background-danger pokemon-card has-text-centered">
-      <div id="point"></div>
+        <div id="point"></div>
         {id ? (
           <div className="card-content">
             <h4 className="is-size-4">
@@ -46,16 +54,16 @@ class PokemonCard extends Component {
                   alt="sprite"
                 />
               ) : (
-                "Sprite no disponible"
-              )}
+                  "Sprite no disponible"
+                )}
             </div>
             <div className="content">
               <TypesBadges types={types} />
             </div>
           </div>
         ) : (
-          "Consultando pokédex..."
-        )}
+            "Consultando pokédex..."
+          )}
       </div>
     );
   }

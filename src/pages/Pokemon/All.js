@@ -1,17 +1,23 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import PokemonService from "../../services/PokemonService";
 import PokemonList from "./PokemonList";
 import PaginationButton from './PaginationButton';
 
 class All extends Component {
-  constructor() {
-    super();
-    this.state = { list: [], error: "", next: "", prev: "" };
-  }
+  state = {
+    list: [],
+    error: "",
+    next: "",
+    prev: ""
+  };
 
-  async componentDidMount() {
+  axiosCancelSource = axios.CancelToken.source();
+
+  _nextPage = async event => {
+    event.preventDefault();
     try {
-      const response = await PokemonService.getAll();
+      const response = await PokemonService.changePage(this.state.next, { cancelToken: this.axiosCancelSource.token });
       const data = response.data.results;
       const prev = response.data.previous;
       const next = response.data.next;
@@ -19,30 +25,43 @@ class All extends Component {
     } catch (error) {
       this.setState({ error: error });
     }
-  }
-
-  _nextPage = async event => {    
-      event.preventDefault();
-      try {
-      alert('next')
-    } catch (error) {
-      this.setState({ error: error });
-    }
   };
 
   _prevPage = async event => {
-      event.preventDefault();
-      try {
-      alert('prev')
-    } catch (error) {
-      this.setState({ error: error });
+    event.preventDefault();
+    try {
+      const response = await PokemonService.changePage(this.state.prev, { cancelToken: this.axiosCancelSource.token });
+      const data = response.data.results;
+      const prev = response.data.previous;
+      const next = response.data.next;
+      this.setState({ list: data, prev: prev, next: next });
+      console.log('prev')
+    } catch (err) {
+      this.setState({ error: err });
     }
   };
+
+  async componentDidMount() {
+    try {
+      const response = await PokemonService.getAll({ cancelToken: this.axiosCancelSource.token });
+      const data = response.data.results;
+      const prev = response.data.previous;
+      const next = response.data.next;
+      this.setState({ list: data, prev: prev, next: next });
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  componentWillUnmount() {
+    console.log('unmount component')
+    this.axiosCancelSource.cancel('Component unmounted.')
+  }
 
   render() {
     const { prev, next, list, error } = this.state
     return (
-      <PokemonList 
+      <PokemonList
         list={list}
         error={error}
       >
