@@ -3,6 +3,7 @@ import TypesBadges from '../../components/TypesBadges';
 import Sprite from '../../components/Sprite';
 import PokemonAbilities from '../../components/PokemonPage/PokemonAbilities';
 import PokemonMainData from '../../components/PokemonPage/PokemonMainData';
+import PokemonStats from '../../components/PokemonPage/PokemonStats';
 
 class Pokemon extends Component {
   state = {
@@ -39,6 +40,9 @@ class Pokemon extends Component {
               >
                 <PokemonAbilities abilities={pokemon.abilities} />
               </PokemonMainData>
+            </div>
+            <div className="column is-full">
+              <PokemonStats stats={pokemon.stats} />
             </div>
           </div>
         </div>
