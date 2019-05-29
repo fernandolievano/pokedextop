@@ -22,7 +22,7 @@ function _renderAbilities(abilities) {
 
 const PokemonAbilities = ({abilities}) => (
   <div>
-    <h4 className="is-size-4">Abilities</h4>
+    <h5 className="is-size-5">Abilities</h5>
     {_renderAbilities(abilities)}
   </div>
 );

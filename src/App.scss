@@ -46,3 +46,9 @@ a, button, .navbar-logo {
   display: flex; 
   justify-content: center;
 }
+.border-left {
+  border-left: 1px solid $main-background !important;
+}
+.border-right {
+  border-right: 1px solid $main-background;
+}
