@@ -4,6 +4,7 @@ import Sprite from '../../components/Sprite';
 import PokemonAbilities from '../../components/PokemonPage/PokemonAbilities';
 import PokemonMainData from '../../components/PokemonPage/PokemonMainData';
 import PokemonStats from '../../components/PokemonPage/PokemonStats';
+import PokemonSprites from '../../components/PokemonPage/PokemonSprites';
 
 class Pokemon extends Component {
   state = {
@@ -43,6 +44,12 @@ class Pokemon extends Component {
             </div>
             <div className="column is-full">
               <PokemonStats stats={pokemon.stats} />
+            </div>
+            <div className="column is-full">
+              <PokemonSprites 
+                sprites={pokemon.sprites} 
+                name={name} 
+              />
             </div>
           </div>
         </div>

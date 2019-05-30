@@ -9,12 +9,12 @@ const Sprite = ({ sprite, name }) => (
         alt={name}
       />
     )
-    : "Sprite no disponible"
+    : `Sprite de ${name} no disponible`
 );
 
 Sprite.propTypes = {
   sprite: PropTypes.string,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string
 }
 
 export default Sprite;
