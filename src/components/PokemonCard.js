@@ -51,7 +51,7 @@ class PokemonCard extends Component {
           {id ? (
             <div className="card-content">
               <h4 className="is-size-4">
-                #{id} - <span className="is-capitalized">{name}</span>
+                <span className="is-capitalized">{name}</span>
               </h4>
               <div className="card-image">
                 <Sprite sprite={this.state.pokemon.sprites.front_default} name={name} />

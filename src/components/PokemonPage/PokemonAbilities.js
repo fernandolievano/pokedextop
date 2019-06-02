@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const _dashToSpace = str => {
+  str = str.replace(/-/g, " ");
+  return str;
+};
+
 function _renderAbilities(abilities) {
   return abilities.map((ab, index) => {
     const { is_hidden } = ab;
     const { name } = ab.ability;
     return <p className="is-capitalized has-text-centered" key={name+index}>
       <span>
-        {name}
+        {_dashToSpace(name)}
       </span>
       {
         is_hidden 

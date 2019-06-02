@@ -2,14 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import Sprite from "../Sprite";
 
+function _underscoreToSpace(str) {
+  str = str.replace(/_/g, ' ');
+  return str;
+}
+
 function _renderSprites(sprites, name) {
   const spriteKeys = Object.keys(sprites);
   return spriteKeys.map((spriteType, i) =>
     sprites[spriteType] === null ? (
-      ""
+      null
     ) : (
       <tr key={spriteType + i}>
-        <th>{spriteType}</th>
+        <th className="is-capitalized">{_underscoreToSpace(spriteType)}</th>
         <td className="has-text-centered">
           <Sprite name={name} sprite={sprites[spriteType]} />
         </td>
@@ -27,7 +32,9 @@ const PokemonSprites = ({ sprites, name }) => (
       </div>
       <div className="column is-full-mobile is-8-tablet is-narrow-desktop">
         <table className="table">
-            {_renderSprites(sprites, name)}
+            <tbody>
+              {_renderSprites(sprites, name)}
+            </tbody>
         </table>
       </div>
   </div>
