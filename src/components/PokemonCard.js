@@ -20,7 +20,7 @@ class PokemonCard extends Component {
       const data = response.data;
       this.setState({ pokemon: data });
     } catch (err) {
-      throw new Error(err)
+      throw new Error(err);
     }
   };
 
@@ -33,7 +33,7 @@ class PokemonCard extends Component {
   }
 
   componentWillUnmount() {
-    this.axiosCancelSource.cancel('Component unmounted.')
+    this.axiosCancelSource.cancel('Componente desmontado.')
   }
 
   render() {

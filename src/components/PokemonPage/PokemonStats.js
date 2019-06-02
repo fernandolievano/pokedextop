@@ -20,7 +20,7 @@ const PokemonStats = ({ stats }) => (
     <div className="column is-full">
       <h4 className="is-size-4 has-text-light">Stats</h4>
     </div>
-    <div className="column is-full">
+    <div className="column is-full-mobile is-8-tablet is-narrow-desktop">
       <table className="table">
         <thead>
           <tr>

@@ -3,19 +3,17 @@ import PropTypes from "prop-types";
 import Sprite from "../Sprite";
 
 function _underscoreToSpace(str) {
-  str = str.replace(/_/g, ' ');
+  str = str.replace(/_/g, " ");
   return str;
 }
 
 function _renderSprites(sprites, name) {
   const spriteKeys = Object.keys(sprites);
   return spriteKeys.map((spriteType, i) =>
-    sprites[spriteType] === null ? (
-      null
-    ) : (
-      <tr key={spriteType + i}>
+    sprites[spriteType] === null ? null : (
+      <tr key={spriteType + i} className="has-text-centered">
         <th className="is-capitalized">{_underscoreToSpace(spriteType)}</th>
-        <td className="has-text-centered">
+        <td>
           <Sprite name={name} sprite={sprites[spriteType]} />
         </td>
       </tr>
@@ -25,18 +23,14 @@ function _renderSprites(sprites, name) {
 
 const PokemonSprites = ({ sprites, name }) => (
   <div className="columns is-multiline is-centered is-vcentered">
-      <div className="column is-full">
-          <h4 className="is-size-4 has-text-light">
-              Sprites
-          </h4>
-      </div>
-      <div className="column is-full-mobile is-8-tablet is-narrow-desktop">
-        <table className="table">
-            <tbody>
-              {_renderSprites(sprites, name)}
-            </tbody>
-        </table>
-      </div>
+    <div className="column is-full">
+      <h4 className="is-size-4 has-text-light">Sprites</h4>
+    </div>
+    <div className="column is-full-mobile is-8-tablet is-narrow-desktop">
+      <table className="table">
+        <tbody>{_renderSprites(sprites, name)}</tbody>
+      </table>
+    </div>
   </div>
 );
 

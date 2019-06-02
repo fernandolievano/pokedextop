@@ -12,7 +12,6 @@ class Pokemon extends Component {
   }
 
   render() {
-    console.log(this.props.location.state.pokemon);
     const { name } = this.props.match.params;
     const { pokemon } = this.props.location.state;
     return (

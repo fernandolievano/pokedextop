@@ -15,12 +15,15 @@ class All extends Component {
   axiosCancelSource = axios.CancelToken.source();
 
   _handleFetch = async (functionToDo = PokemonService.getAll({cancelToken: this.axiosCancelSource.token})) => {
+    const loadingModal = document.getElementById('loading');
+    loadingModal.classList.add('is-active');
     const response = await functionToDo
-    const data = response.data.results;
-    const prev = response.data.previous;
-    const next = response.data.next;
+    const data = await response.data.results;
+    const prev = await response.data.previous;
+    const next = await response.data.next;
     await this.setState({ list: data, prev: prev, next: next });
-    document.getElementById('point').focus();
+    await document.getElementById('point').focus();
+    loadingModal.classList.remove('is-active');
   }
 
   _nextPage = async event => {
@@ -50,7 +53,7 @@ class All extends Component {
   }
 
   componentWillUnmount() {
-    this.axiosCancelSource.cancel('Component unmounted.')
+    this.axiosCancelSource.cancel('Componente desmontado');
   }
 
   render() {
