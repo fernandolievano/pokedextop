@@ -1,5 +1,5 @@
-import React from "react";
-import Logo from "../../pokeball.svg";
+import React from 'react';
+import Logo from '../../pokeball.svg';
 
 const Home = () => (
   <div className="columns is-multiline is-centered">
@@ -7,8 +7,53 @@ const Home = () => (
       <img src={Logo} alt="Logo Pokéball" className="logo" />
     </div>
     <div className="column is-full ">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati itaque omnis repellat quidem tempore quis iste consequatur voluptates blanditiis repudiandae! Perspiciatis corrupti qui quisquam laudantium cupiditate voluptatibus nam, dolorem ipsum!
-            </div>
+      <p>
+        <small>
+          Pokédesk is an{' '}
+          <a
+            className="has-text-light"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/fernandolievano/pokedesk"
+          >
+            open source app
+          </a>{' '}
+          by{' '}
+          <a
+            href="https://github.com/fernandolievano"
+            className="has-text-light"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Fernando Liévano
+          </a>
+          , built with{' '}
+          <a
+            href="https://electronjs.org/"
+            className="has-text-light"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Electron
+          </a>{' '}
+          and{' '}
+          <a
+            href="https://pokeapi.co/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="has-text-light"
+          >
+            Pokéapi
+          </a>
+          .
+        </small>
+      </p>
+      <p>
+        <small>
+          Content is © Nintendo, Game Freak, and The Pokémon Company.
+        </small>
+      </p>
+    </div>
   </div>
 );
 
