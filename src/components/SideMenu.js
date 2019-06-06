@@ -7,7 +7,7 @@ function SideMenu() {
       <ul className="menu-list" id="menu">
         <li>
           <NavLink to="/" exact activeClassName="is-active">
-            Inicio
+            Home
           </NavLink>
         </li>
         <li>

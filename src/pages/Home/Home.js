@@ -1,17 +1,58 @@
-import React from "react";
-import Logo from "../../pokeball.svg";
+import React from 'react';
+import Logo from '../../pokeball.svg';
 
 const Home = () => (
-  <div className="section">
-    <div className="container has-text-centered">
+  <div className="columns is-multiline is-centered">
+    <div className="column is-full has-text-centered">
       <img src={Logo} alt="Logo Pokéball" className="logo" />
     </div>
-    <div className="container">
-      <div className="columns is-multiline is-centered">
-        <div className="column">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati itaque omnis repellat quidem tempore quis iste consequatur voluptates blanditiis repudiandae! Perspiciatis corrupti qui quisquam laudantium cupiditate voluptatibus nam, dolorem ipsum!
-            </div>
-      </div>
+    <div className="column is-full ">
+      <p>
+        <small>
+          Pokédesk is an{' '}
+          <a
+            className="has-text-light"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/fernandolievano/pokedesk"
+          >
+            open source app
+          </a>{' '}
+          by{' '}
+          <a
+            href="https://github.com/fernandolievano"
+            className="has-text-light"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Fernando Liévano
+          </a>
+          , built with{' '}
+          <a
+            href="https://electronjs.org/"
+            className="has-text-light"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Electron
+          </a>{' '}
+          and{' '}
+          <a
+            href="https://pokeapi.co/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="has-text-light"
+          >
+            Pokéapi
+          </a>
+          .
+        </small>
+      </p>
+      <p>
+        <small>
+          Content is © Nintendo, Game Freak, and The Pokémon Company.
+        </small>
+      </p>
     </div>
   </div>
 );

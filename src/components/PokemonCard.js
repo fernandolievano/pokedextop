@@ -1,8 +1,10 @@
 import React, { PureComponent as Component } from "react";
+import { NavLink as Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from "prop-types";
-import PokemonService from "../../services/PokemonService";
+import PokemonService from "../services/PokemonService";
 import TypesBadges from "./TypesBadges";
+import Sprite from './Sprite';
 
 class PokemonCard extends Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class PokemonCard extends Component {
       const data = response.data;
       this.setState({ pokemon: data });
     } catch (err) {
-      throw new Error(err)
+      throw new Error(err);
     }
   };
 
@@ -31,8 +33,7 @@ class PokemonCard extends Component {
   }
 
   componentWillUnmount() {
-    console.log('unmount component')
-    this.axiosCancelSource.cancel('Component unmounted.')
+    this.axiosCancelSource.cancel('Componente desmontado.')
   }
 
   render() {
@@ -40,31 +41,30 @@ class PokemonCard extends Component {
     const { id, types } = this.state.pokemon;
 
     return (
-      <div className="card has-background-danger pokemon-card has-text-centered">
-        <div id="point"></div>
-        {id ? (
-          <div className="card-content">
-            <h4 className="is-size-4">
-              #{id} - <span className="is-capitalized">{name}</span>
-            </h4>
-            <div className="card-image">
-              {this.state.pokemon.sprites.front_default ? (
-                <img
-                  src={this.state.pokemon.sprites.front_default}
-                  alt="sprite"
-                />
-              ) : (
-                  "Sprite no disponible"
-                )}
+      <Link to={{
+        pathname: `/pokemon/${name}`,
+        state: {
+          pokemon: this.state.pokemon
+        }
+      }}>
+        <div className="card has-background-danger pokemon-card has-text-centered">
+          {id ? (
+            <div className="card-content">
+              <h4 className="is-size-4">
+                <span className="is-capitalized">{name}</span>
+              </h4>
+              <div className="card-image">
+                <Sprite sprite={this.state.pokemon.sprites.front_default} name={name} />
+              </div>
+              <div className="content">
+                <TypesBadges types={types} />
+              </div>
             </div>
-            <div className="content">
-              <TypesBadges types={types} />
-            </div>
-          </div>
-        ) : (
-            "Consultando pokédex..."
-          )}
-      </div>
+          ) : (
+              "Consultando pokédex..."
+            )}
+        </div>
+      </Link>
     );
   }
 }

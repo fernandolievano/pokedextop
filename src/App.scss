@@ -8,6 +8,7 @@ $background: rgb(240,240,240);
 $text: rgb(240,240,240);
 $link: rgb(34,34,36);
 $menu-list-border-left: rgb(240,240,240);
+$danger-darker: rgb(231, 56, 71);
 
 @import '../node_modules/bulma/sass/utilities/_all.sass';
 @import '../node_modules/bulma/sass/base/_all.sass';
@@ -41,4 +42,20 @@ a, button, .navbar-logo {
 }
 .pokemon-card:hover {
   transform: scale(1.1);
+}
+.tags-container {
+  display: flex; 
+  justify-content: center;
+}
+.border-left {
+  border-left: 0.5px solid $danger-darker !important;
+}
+.border-right {
+  border-right: 0.5px solid $danger-darker;
+}
+.border-bottom {
+  border-bottom: 1px solid $danger-darker;
+}
+.border-top {
+  border-top: 1px solid $danger-darker;
 }
