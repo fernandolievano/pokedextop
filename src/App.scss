@@ -3,11 +3,11 @@
 
 // variables
 $family-sans-serif: 'Nunito', sans-serif;
-$main-background: 	rgb(238,21,21);
-$background: rgb(240,240,240);
-$text: rgb(240,240,240);
-$link: rgb(34,34,36);
-$menu-list-border-left: rgb(240,240,240);
+$main-background: rgb(238, 21, 21);
+$background: rgb(240, 240, 240);
+$text: rgb(240, 240, 240);
+$link: rgb(34, 34, 36);
+$menu-list-border-left: rgb(240, 240, 240);
 $danger-darker: rgb(231, 56, 71);
 
 @import '../node_modules/bulma/sass/utilities/_all.sass';
@@ -21,8 +21,13 @@ html {
 a {
   font-weight: bolder;
 }
-a, button, .navbar-logo {
+a,
+button,
+.navbar-logo {
   transition: all 0.2s ease-in-out;
+}
+.table {
+  border: 0.5em solid $danger-darker;
 }
 .logo {
   width: 12em;
@@ -44,7 +49,7 @@ a, button, .navbar-logo {
   transform: scale(1.1);
 }
 .tags-container {
-  display: flex; 
+  display: flex;
   justify-content: center;
 }
 .border-left {

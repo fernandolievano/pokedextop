@@ -13,23 +13,23 @@ class All extends Component {
   };
 
   axiosCancelSource = axios.CancelToken.source();
+  loadingModal = document.getElementById('loading');
 
-  _handleFetch = async (functionToDo = PokemonService.getAll({cancelToken: this.axiosCancelSource.token})) => {
-    const loadingModal = document.getElementById('loading');
-    loadingModal.classList.add('is-active');
+  _handleFetch = async (functionToDo = PokemonService.getAll({ cancelToken: this.axiosCancelSource.token })) => {
+    this.loadingModal.classList.add('is-active');
     const response = await functionToDo
     const data = await response.data.results;
     const prev = await response.data.previous;
     const next = await response.data.next;
     await this.setState({ list: data, prev: prev, next: next });
     await document.getElementById('point').focus();
-    loadingModal.classList.remove('is-active');
   }
 
   _nextPage = async event => {
     event.preventDefault();
     try {
-      this._handleFetch(PokemonService.changePage(this.state.next, { cancelToken: this.axiosCancelSource.token }));
+      await this._handleFetch(PokemonService.changePage(this.state.next, { cancelToken: this.axiosCancelSource.token }));
+      this.loadingModal.classList.remove('is-active');
     } catch (error) {
       this.setState({ error });
     }
@@ -38,7 +38,8 @@ class All extends Component {
   _prevPage = async event => {
     event.preventDefault();
     try {
-      this._handleFetch(PokemonService.changePage(this.state.prev, { cancelToken: this.axiosCancelSource.token }));
+      await this._handleFetch(PokemonService.changePage(this.state.prev, { cancelToken: this.axiosCancelSource.token }));
+      this.loadingModal.classList.remove('is-active');
     } catch (error) {
       this.setState({ error });
     }
@@ -46,7 +47,8 @@ class All extends Component {
 
   async componentDidMount() {
     try {
-      this._handleFetch();
+      await this._handleFetch();
+      this.loadingModal.classList.remove('is-active');
     } catch (err) {
       this.setState({ err })
     }
