@@ -6,7 +6,7 @@ const Home = () => (
     <div className="column is-full has-text-centered">
       <img src={Logo} alt="Logo Pokéball" className="logo" />
     </div>
-    <div className="column is-full ">
+    <div className="column is-full  has-text-centered">
       <p>
         <small>
           Pokédesk is an{' '}

@@ -18,7 +18,7 @@ const _renderStats = stats =>
 const PokemonStats = ({ stats }) => (
   <div className="columns is-centered is-multiline">
     <div className="column is-full">
-      <h4 className="is-size-4 has-text-light">Stats</h4>
+      <h4 className="is-size-4">Stats</h4>
     </div>
     <div className="column is-full-mobile is-8-tablet is-narrow-desktop">
       <table className="table">
