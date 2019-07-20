@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-boost": "^0.4.3",
     "apollo-server": "^2.6.9",
     "axios": "^0.19.0",
     "bulma": "^0.7.4",
@@ -10,7 +11,9 @@
     "graphql": "^14.4.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
+    "react-lazy-load": "^3.0.13",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1"
@@ -22,6 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"set BROWSER=none && yarn start\" \"wait-on http://localhost:3000 && electron .\" \" nodemon public/apollo-server.js \" ",
+    "dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000\" \" nodemon public/apollo-server.js \" ",
     "server": "nodemon public/apollo-server.js"
   },
   "eslintConfig": {

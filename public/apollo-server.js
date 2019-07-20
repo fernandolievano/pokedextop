@@ -18,9 +18,21 @@ const typeDefs = gql`
     type: PokemonTypeFromList
   }
 
+  type Sprites {
+    back_default: String
+    back_female: String
+    back_shiny: String
+    back_shiny_female: String
+    front_default: String
+    front_female: String
+    front_shiny: String
+    front_shiny_female: String
+  }
+
   type Pokemon {
-    name: String
+    id: ID
     types: [PokemonTypeList]
+    sprites: Sprites
   }
 
   type Query {
@@ -47,7 +59,8 @@ const server = new ApolloServer({
 
 function fetchPokemonList() {
   return axios
-    .get('https://pokeapi.co/api/v2/pokemon/?limit=151')
+    .get('https://pokeapi.co/api/v2/pokemon/?limit=9')
+    // .get('https://pokeapi.co/api/v2/pokemon/?limit=964')-
     .then(response => response.data.results);
 }
 

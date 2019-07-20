@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import TypesBadges from '../../components/TypesBadges';
 import Sprite from '../../components/Sprite';
 import PokemonAbilities from '../../components/PokemonPage/PokemonAbilities';
@@ -6,15 +8,36 @@ import PokemonMainData from '../../components/PokemonPage/PokemonMainData';
 import PokemonStats from '../../components/PokemonPage/PokemonStats';
 import PokemonSprites from '../../components/PokemonPage/PokemonSprites';
 
-class Pokemon extends Component {
-  state = {
-    pokemon: {}
+const fetchPokemon = gql`
+  query Pokemon($url: String!) {
+    pokemon(url: $url) {
+      id
+      sprites {
+        back_default
+        back_female
+        back_shiny
+        back_shiny_female
+        front_default
+        front_female
+        front_shiny
+        front_shiny_female
+      }
+      types {
+        slot
+        type {
+          name
+          url
+        }
+      }
+    }
   }
+`;
 
+class Pokemon extends Component {
   render() {
     const { name } = this.props.match.params;
-    const { pokemon } = this.props.location.state;
-    return (
+    const { url } = this.props.location.state;
+    /* return (
       <div className="has-background-danger columns is-centered is-multiline">
         <header className="has-text-centered column is-full">
           <h3 className="title is-capitalized has-text-light">{name}</h3>
@@ -53,7 +76,8 @@ class Pokemon extends Component {
           </div>
         </div>
       </div>
-    );
+    ); */
+    return url
   }
 }
 
