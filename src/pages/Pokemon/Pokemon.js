@@ -29,55 +29,94 @@ const fetchPokemon = gql`
           url
         }
       }
+      height
+      weight
+      base_experience
+      abilities {
+        slot
+        is_hidden
+        ability {
+          name
+          url
+        }
+      }
+      stats {
+        base_stat
+        effort
+        stat{
+          name
+          url
+        }
+      }
     }
   }
 `;
+
+const Data = ({url, name}) => (
+  <Query query={fetchPokemon} variables={{ url }} >
+    {({ loading, error, data }) => {
+      if (loading) {
+        return <p className="has-text-centered is-size-4">Waiting for Pokédex data...</p>
+      }
+      if (error) {
+        return <p className="has-text-centered is-size-4">Oops!, the Pokédex it's not working now.</p>;
+      }
+      console.log(data)
+      return <PokemonData name={name} pokemon={data.pokemon} />;
+    }}
+  </Query>
+)
+
+const PokemonData = ({ name, pokemon }) => {
+  
+  return (
+    <div className="has-background-danger columns is-centered is-multiline">
+      <header className="has-text-centered column is-full">
+        <h3 className="title is-capitalized has-text-light">{name}</h3>
+        <div className="card-image">
+          <Sprite
+            sprite={pokemon.sprites.front_default}
+            name={name}
+          />
+          <Sprite
+            sprite={pokemon.sprites.back_default}
+            name={name}
+          />
+        </div>
+        <TypesBadges types={pokemon.types} />
+      </header>
+      <div className="content column is-full">
+        <div className="columns is-multiline is-centered">
+          <div className="column is-full has-background-dark">
+            <PokemonMainData
+              baseExperience={pokemon.base_experience}
+              height={pokemon.height}
+              weight={pokemon.weight}
+            >
+              <PokemonAbilities abilities={pokemon.abilities} />
+            </PokemonMainData>
+          </div>
+          <div className="column has-background-light is-full">
+            <PokemonStats stats={pokemon.stats} />
+          </div>
+          <div className="column has-background-light is-full">
+            <PokemonSprites
+              sprites={pokemon.sprites}
+              name={name}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 class Pokemon extends Component {
   render() {
     const { name } = this.props.match.params;
     const { url } = this.props.location.state;
-    /* return (
-      <div className="has-background-danger columns is-centered is-multiline">
-        <header className="has-text-centered column is-full">
-          <h3 className="title is-capitalized has-text-light">{name}</h3>
-          <div className="card-image">
-            <Sprite
-              sprite={pokemon.sprites.front_default}
-              name={name}
-            />
-            <Sprite
-              sprite={pokemon.sprites.back_default}
-              name={name}
-            />
-          </div>
-          <TypesBadges types={pokemon.types} />
-        </header>
-        <div className="content column is-full">
-          <div className="columns is-multiline is-centered">
-            <div className="column is-full">
-              <PokemonMainData 
-                baseExperience={pokemon.base_experience} 
-                height={pokemon.height}
-                weight={pokemon.weight}
-              >
-                <PokemonAbilities abilities={pokemon.abilities} />
-              </PokemonMainData>
-            </div>
-            <div className="column is-full">
-              <PokemonStats stats={pokemon.stats} />
-            </div>
-            <div className="column is-full">
-              <PokemonSprites 
-                sprites={pokemon.sprites} 
-                name={name} 
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    ); */
-    return url
+
+    return <Data name={name} url={url} />
   }
 }
 

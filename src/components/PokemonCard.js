@@ -34,10 +34,6 @@ const Data = ({ url, name }) => (
       return (
         <div>
           <div className='card-image'>
-            {/* <Sprite
-              sprite={data.pokemon.sprites.front_default}
-              name={name}
-            /> */}
             <LazyLoad>
               <ImageLoader src={data.pokemon.sprites.front_default} />
             </LazyLoad>

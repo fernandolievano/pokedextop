@@ -9,6 +9,8 @@ function _underscoreToSpace(str) {
 
 function _renderSprites(sprites, name) {
   const spriteKeys = Object.keys(sprites);
+  spriteKeys.pop();
+  
   return spriteKeys.map((spriteType, i) =>
     sprites[spriteType] === null ? null : (
       <tr key={spriteType + i} className="has-text-centered">
@@ -24,7 +26,7 @@ function _renderSprites(sprites, name) {
 const PokemonSprites = ({ sprites, name }) => (
   <div className="columns is-multiline is-centered is-vcentered">
     <div className="column is-full">
-      <h4 className="is-size-4 has-text-light">Sprites</h4>
+      <h4 className="is-size-4">Sprites</h4>
     </div>
     <div className="column is-full-mobile is-8-tablet is-narrow-desktop">
       <table className="table">

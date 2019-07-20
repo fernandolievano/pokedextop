@@ -14,8 +14,30 @@ const typeDefs = gql`
   }
 
   type PokemonTypeList {
-    slot: String
+    slot: Int
     type: PokemonTypeFromList
+  }
+
+  type PokemonAbility {
+    is_hidden: Boolean
+    slot: Int
+    ability: PokemonAbilityData
+  }
+
+  type PokemonAbilityData {
+    name: String
+    url: String
+  }
+
+  type PokemonStat {
+    base_stat: Int
+    effort: Int
+    stat: PokemonStatData
+  }
+
+  type PokemonStatData {
+    name: String
+    url: String
   }
 
   type Sprites {
@@ -33,6 +55,11 @@ const typeDefs = gql`
     id: ID
     types: [PokemonTypeList]
     sprites: Sprites
+    base_experience: Int
+    height: Int
+    weight: Int
+    abilities: [PokemonAbility]
+    stats: [PokemonStat]
   }
 
   type Query {
