@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import TypesBadges from './TypesBadges';
-// import Sprite from './Sprite';
 import ImageLoader from './ImageLoader';
 
 const fetchPokemon = gql`
