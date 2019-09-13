@@ -12,12 +12,20 @@ const getList = gql`
   }
 `;
 
+let pokemonList = [];
+
 const Data = () => (
   <Query query={getList}>
     {({ loading, error, data }) => {
       if (loading) return <p className="has-text-centered is-size-4">Loading...</p>;
       if (error) return <p className="has-text-centered is-size-4">Error!</p>;
-      return <PokemonList list={data.pokemonList} />;
+
+      if (pokemonList.length > 0) {
+        return <PokemonList list={pokemonList} />;
+      } else {
+        pokemonList = data.pokemonList;
+        return <PokemonList list={pokemonList} />;
+      }
     }}
   </Query>
 );

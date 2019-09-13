@@ -8,6 +8,7 @@ import PokemonAbilities from "../../components/PokemonPage/PokemonAbilities";
 import PokemonMainData from "../../components/PokemonPage/PokemonMainData";
 import PokemonStats from "../../components/PokemonPage/PokemonStats";
 import PokemonSprites from "../../components/PokemonPage/PokemonSprites";
+import PokemonMoves from '../../components/PokemonPage/PokemonMoves';
 
 const fetchPokemon = gql`
   query Pokemon($url: String!) {
@@ -91,8 +92,8 @@ const PokemonData = ({ name, pokemon }) => {
         </div>
         <TypesBadges types={pokemon.types} />
       </header>
-      <div className="content column is-full">
-        <div className="columns is-multiline is-centered">
+      <section className="content column is-full">
+        <article className="columns is-multiline is-centered">
           <div className="column is-full has-background-dark">
             <PokemonMainData
               baseExperience={pokemon.base_experience}
@@ -108,8 +109,11 @@ const PokemonData = ({ name, pokemon }) => {
           <div className="column has-background-light is-full">
             <PokemonSprites sprites={pokemon.sprites} name={name} />
           </div>
-        </div>
-      </div>
+          <div className="column has-background-light is-full">
+            <PokemonMoves />
+          </div>
+        </article>
+      </section>
     </div>
   );
 };

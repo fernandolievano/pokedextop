@@ -44,7 +44,7 @@ a, button, .navbar-logo {
   transform: scale(1.1);
 }
 .tags-container {
-  display: flex; 
+  display: flex;
   justify-content: center;
 }
 .border-left {
@@ -61,4 +61,12 @@ a, button, .navbar-logo {
 }
 .margin-x {
   margin: auto 1em;
+}
+.is-link-disabled {
+  pointer-events: none;
+}
+
+// Tables styles
+.table {
+  border: 0.2rem solid $dark;
 }

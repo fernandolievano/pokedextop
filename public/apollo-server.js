@@ -40,6 +40,11 @@ const typeDefs = gql`
     url: String
   }
 
+  type PokemonMove {
+    name: String,
+    url: String
+  }
+
   type Sprites {
     back_default: String
     back_female: String
@@ -59,7 +64,8 @@ const typeDefs = gql`
     height: Int
     weight: Int
     abilities: [PokemonAbility]
-    stats: [PokemonStat]
+    stats: [PokemonStat],
+    moves: [PokemonMove]
   }
 
   type Query {
@@ -86,8 +92,7 @@ const server = new ApolloServer({
 
 function fetchPokemonList() {
   return axios
-    .get('https://pokeapi.co/api/v2/pokemon/?limit=9')
-    // .get('https://pokeapi.co/api/v2/pokemon/?limit=964')-
+    .get('https://pokeapi.co/api/v2/pokemon/?limit=151')
     .then(response => response.data.results);
 }
 
