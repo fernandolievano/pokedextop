@@ -12,10 +12,12 @@ function _renderSprites(sprites, name) {
   spriteKeys.pop();
   
   return spriteKeys.map((spriteType, i) =>
-    sprites[spriteType] === null ? null : (
+    sprites[spriteType] === null 
+    ? null 
+    : (
       <tr key={spriteType + i} className="has-text-centered">
         <th className="is-capitalized">{_underscoreToSpace(spriteType)}</th>
-        <td>
+        <td className="has-text-centered">
           <Sprite name={name} sprite={sprites[spriteType]} />
         </td>
       </tr>
